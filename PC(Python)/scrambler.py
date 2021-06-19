@@ -1,11 +1,10 @@
 import pycuber as pc
-import kociemba
 
 # Cube
 def get_cube_string(scramble):
     # Gets cube visualisation
     vis_cube = pc.Cube()
-    vis_cube = str(vis_cube("z2 " + scramble))
+    vis_cube = str(vis_cube("z2 " + scramble)).upper()
 
     # Filters the string for letters(colors) only
     ls_cube = [val for val in list(vis_cube) if val != ' ' and val != '[' and val != ']' and val != '\n']
@@ -18,4 +17,9 @@ def get_cube_string(scramble):
 
     # Formats it for solver
     str_cube = U + middle_cube[18: 27] + middle_cube[9: 18] + D + middle_cube[0:9] + middle_cube[27:36]
+
+    str_cube = str_cube.replace("G", "F")
+    str_cube = str_cube.replace("W", "U")
+    str_cube = str_cube.replace("Y", "D")
+    str_cube = str_cube.replace("O", "L")
     return str_cube
